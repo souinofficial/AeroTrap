@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 Froststrap
+#
+# SPDX-License-Identifier: MPL-2.0
+
+[workspace]
+resolver = "3"
+members = [
+  "notify",
+  "mobileappreg",
+  "virtualdisplay",
+]
+default-members = [
+  "notify",
+]
+
+[workspace.package]
+edition = "2024"
+license = "MPL-2.0"
+authors = [
+  "Invra <identificationsucks@gmail.com>",
+  "UltimatePlayer97 <gogole.help134@gmail.com>",
+  "RealMeddsam <meddsamreal@gmail.com>"
+]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = "symbols"
+panic = "abort"
+incremental = false
+
+[workspace.dependencies]
+objc2 = "0.6"
+block2 = "0.6"
+dispatch2 = "0.3"
+objc2-core-services = "0.3"
+objc2-core-foundation = "0.3"
+
+[workspace.dependencies.objc2-core-graphics]
+version = "0.3"
+features = ["CGDirectDisplay", "CGDisplayConfiguration"]
+
+[workspace.dependencies.rustbus]
+version = "0.19.3"
+default-features = false
+
+[workspace.dependencies.windows]
+version = "0.62.2"
+features = [
+  "UI_Notifications",
+  "Data_Xml_Dom",
+]
